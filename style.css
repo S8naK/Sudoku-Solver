@@ -66,10 +66,10 @@ nav {
 }
 
 #mistakesContainer {
-  position: absolute;
-  top: 49px;
-  left: 618px;
-
+  display: flex;
+  justify-content: center;
+  margin-top: 1px;
+  margin-bottom: -25px;
   color: aqua;
   font-size: 14px;
 }
@@ -90,6 +90,7 @@ nav {
   width: 40px;
   height: 40px;
   font-size: 15px;
+  font-weight: 600;
   margin: 0;
   border: 1px solid aqua;
   display: flex;  
@@ -101,12 +102,12 @@ nav {
 }
 
 .square:hover {
-  background-color: lightskyblue;
+  background-color: rgb(123,50,250);
   cursor: pointer;
 }
 
 .solveColour {
-  background-color: lightgreen;
+  background-color: #f1ff5c;
 }
 
 .borderBottom {
