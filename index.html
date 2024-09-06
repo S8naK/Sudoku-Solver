@@ -2,45 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku Solver</title>
-    <link rel="stylesheet" href="./index.css"/>
-    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
 </head>
-<body id="body">
-
-    <div class="main" id="main">
-        <h1 class="heading" id="heading">Sudoku Solver</h1>
-        <div class="active">
-
-            <div class="mainButtons">
-                <div class="solver" id="solver"><h1>Solve !</h1></div>
-                <div class="speedup" id="speedup"><h1>Speed Solve !</h1></div>
-                <div class="newBoard" id="newBoard"><h1>New Board !</h1></div>
-            </div>
-                
-            <div id="board" class="board"></div>
-
-            <div id="numbers" class="numbers">
-                <p class="nums" id="one">1</p>
-                <p class="nums" id="two">2</p>
-                <p class="nums" id="three">3</p>
-                <p class="nums" id="four">4</p>
-                <p class="nums" id="five">5</p>
-                <p class="nums" id="six">6</p>
-                <p class="nums" id="seven">7</p>
-                <p class="nums" id="eight">8</p>
-                <p class="nums" id="nine">9</p>
-                <p class="nums" id="del">del</p>
-            </div>
-            <div class="allWarnings">
-                <p class="warning1" id="warning1">Number is being<br> repeated in the same row</p>
-                <p class="warning2" id="warning2">Number is being<br> repeated in the same column</p>
-                <p class="warning3" id="warning3">Number is being<br> repeated in the same compartment</p>
+<body>
+    <nav>
+        <div class="navbar-left">
+            <h1>Sudoku Solver</h1>
+        </div>
+        <div class="navbar-right">
+            <button class="new-game-btn" id="newGameBtn">New Game</button>
+            <div class="dropdown-content" id="gameMenu">
+                <a href="#" onclick="startGame('easy')">Easy</a>
+                <a href="#" onclick="startGame('medium')">Medium</a>
+                <a href="#" onclick="startGame('hard')">Hard</a>
+                <a href="#" onclick="startGame('expert')">Expert</a>
             </div>
         </div>
+    </nav>
+
+    <div class="active">
+
+        <div id="mistakesContainer">
+            <p id="mistakesDisplay">Mistakes: 0</p>
+        </div>
+
+        <div id="board" class="board"></div>
+
+        <div class="mainButtons">
+            <button class="solver" id="solver">Solve</button>
+            <button class="speedup" id="speedup">Speed Solve</button>
+        </div>
+        <div class="clearBoard" id="clearBoard">
+            <button>Clear Board</button>
+        </div>
+
+        <div id="numbers" class="numbers">
+            <p class="nums" id="one">1</p>
+            <p class="nums" id="two">2</p>
+            <p class="nums" id="three">3</p>
+            <p class="nums" id="four">4</p>
+            <p class="nums" id="five">5</p>
+            <p class="nums" id="six">6</p>
+            <p class="nums" id="seven">7</p>
+            <p class="nums" id="eight">8</p>
+            <p class="nums" id="nine">9</p>
+            <p class="nums" id="del">X</p>
+        </div>
     </div>
-    
+
+    <script>
+        document.getElementById("newGameBtn").addEventListener("click", function() {
+            var menu = document.getElementById("gameMenu");
+            menu.classList.toggle("show");
+        });
+
+        function startGame(level) {
+            alert("Starting " + level + " game!");
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.new-game-btn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>
